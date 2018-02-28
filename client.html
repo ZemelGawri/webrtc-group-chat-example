@@ -7,19 +7,18 @@
              longer be necessary. -->
         <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
         <style>
-            html, body { 
-                background-color: #333; 
+            html, body {
+                background-color: #464a55; 
             }
 	    body {
     		overflow:hidden;
 	    }
-            video {
-                width:  320px;
-                height:  240px;
-                border:  1px solid black;
+            audio {
+                text-align:center;
+		display: table;
+    		margin: 0 auto;
             }
         </style>
-
         <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
         <script>
             /** CONFIG **/
@@ -27,13 +26,14 @@
             var USE_AUDIO = true;
             var USE_VIDEO = false;
             var DEFAULT_CHANNEL = 'some-global-channel-name';
-            var MUTE_AUDIO_BY_DEFAULT = true;
+            var MUTE_AUDIO_BY_DEFAULT = false;
 
             /** You should probably use a different stun server doing commercial stuff **/
             /** Also see: https://gist.github.com/zziuni/3741933 **/
             var ICE_SERVERS = [
                 {url:"stun:stun.l.google.com:19302"}
             ];
+
         </script>
 
 
@@ -275,7 +275,7 @@
                     },
                     function() { /* user denied access to a/v */
                         console.log("Access denied for audio/video");
-                        alert("You chose not to provide access to the camera/microphone, demo will not work.");
+                        alert("You chose not to provide access to the camera/microphone");
                         if (errorback) errorback();
                     });
             }
@@ -283,6 +283,7 @@
     </head>
     <body onload='init()'>
 	<h4 style="color:white;text-align:center;">[18:25//hydrogen]</h4>
+	</div></div>
         <!--
         the <video> and <audio> tags are all added and removed dynamically
         in 'onAddStream', 'setup_local_media', and 'removePeer'/'disconnect'
