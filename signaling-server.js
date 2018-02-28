@@ -13,8 +13,8 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var main = express()
 var options = {
-  key: fs.readFileSync('./ssl/file.pem'),
-  cert: fs.readFileSync('./ssl/file.crt')
+  key: fs.readFileSync('file.pem'),
+  cert: fs.readFileSync('file.crt')
 };
 var server = https.createServer(options, main)
 var io  = require('socket.io').listen(server);
