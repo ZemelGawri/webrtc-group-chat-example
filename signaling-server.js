@@ -1,22 +1,17 @@
 /**************/
 /*** CONFIG ***/
 /**************/
-var PORT = 443;
+var PORT = 8080;
 
 
 /*************/
 /*** SETUP ***/
 /*************/
-var fs = require('fs');
-var https = require('https');
 var express = require('express');
+var http = require('http');
 var bodyParser = require('body-parser')
 var main = express()
-var options = {
-  key: fs.readFileSync('file.pem'),
-  cert: fs.readFileSync('file.crt')
-};
-var server = https.createServer(options, main)
+var server = http.createServer(main)
 var io  = require('socket.io').listen(server);
 //io.set('log level', 2);
 
